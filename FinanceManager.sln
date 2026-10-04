@@ -2,6 +2,10 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FinanceManager.Console", "FinanceManager.Console\FinanceManager.Console.csproj", "{91C6685C-AF46-4D6B-9E78-90CEA7912508}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LearningTupleForEach", "LearningTupleForEach\LearningTupleForEach.csproj", "{AB28A3B5-BDF6-4584-B44B-BF2E41E101C9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LearningEnum", "LearningEnum\LearningEnum.csproj", "{B7F18E69-2386-483A-A96E-F8E1765E8608}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -12,5 +16,13 @@ Global
 		{91C6685C-AF46-4D6B-9E78-90CEA7912508}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{91C6685C-AF46-4D6B-9E78-90CEA7912508}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{91C6685C-AF46-4D6B-9E78-90CEA7912508}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AB28A3B5-BDF6-4584-B44B-BF2E41E101C9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AB28A3B5-BDF6-4584-B44B-BF2E41E101C9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AB28A3B5-BDF6-4584-B44B-BF2E41E101C9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AB28A3B5-BDF6-4584-B44B-BF2E41E101C9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B7F18E69-2386-483A-A96E-F8E1765E8608}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B7F18E69-2386-483A-A96E-F8E1765E8608}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B7F18E69-2386-483A-A96E-F8E1765E8608}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B7F18E69-2386-483A-A96E-F8E1765E8608}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
