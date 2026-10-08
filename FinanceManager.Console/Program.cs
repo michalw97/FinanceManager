@@ -2,6 +2,7 @@
 List<(int id, DateTime date, TransactionType transactionType, decimal amount)> transactions = [];
 
 int transactionId = 0;
+decimal accountBalance = 0;
 
 while (financeManagerActive)
 {
@@ -10,7 +11,8 @@ while (financeManagerActive)
     Console.WriteLine("2. Usuń Transakcję.");
     Console.WriteLine("3. Edytuj Transakcję.");
     Console.WriteLine("4. Wyświetl Wszystkie Transakcje.");
-    Console.WriteLine("5. Zakończ Program.\n");
+    Console.WriteLine("5. Wyświetl Stan Konta.");
+    Console.WriteLine("6. Zakończ Program.\n");
     
     Console.Write("Wybierz opcję do wyboru: ");
     var isValidInput = int.TryParse(Console.ReadLine(), out int userChoice);
@@ -88,6 +90,8 @@ while (financeManagerActive)
                 userValidAmount = userValidAmount * -1;
             }
 
+            accountBalance += userValidAmount;
+
             transactionId += 1;
             DateTime dateValidTransaction = DateTime.Now;
 
@@ -104,13 +108,37 @@ while (financeManagerActive)
             Console.WriteLine("Edytuj transakcję\n");
             break;
         case 4:
-            Console.WriteLine("Wyświetl transakcje\n");
+
+            if (transactions.Count == 0)
+            {
+                Console.WriteLine("Brak transakcji do pokazania.\n");
+            }
+            else
+            {
+                foreach (var trans in transactions)
+                {
+                    Console.WriteLine($"ID transakcji: {trans.id}");
+                    Console.WriteLine($"Data transakcji: {trans.date}");
+                    Console.WriteLine($"Typ transakcji: {trans.transactionType}");
+                    Console.WriteLine($"Kwota: {trans.amount},-");
+                    Console.WriteLine();
+                }
+            }
             break;
+        
         case 5:
-            Console.WriteLine("Zakończ program!");
+            
+            Console.WriteLine($"Twoj stan konta wynosi: {accountBalance},-\n");
+            break;
+        
+        case 6:
+            
+            Console.WriteLine("Wyłączam program. Do zobaczenia!");
             financeManagerActive = false;
             break;
+        
         default:
+            
             Console.WriteLine("Nie można odczytać opcji. Spróbuj ponownie.\n");
             break;
     }
