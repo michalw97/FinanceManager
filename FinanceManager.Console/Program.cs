@@ -98,11 +98,79 @@ while (financeManagerActive)
             (int id, DateTime date, TransactionType transactionType, decimal amount) transaction = (transactionId, dateValidTransaction, transactionType, userValidAmount);
             transactions.Add(transaction);
             Console.WriteLine();
-            Console.WriteLine("Operacja zakończona sukcesem.");
+            Console.WriteLine("Operacja zakończona sukcesem.\n");
             
             break;
         case 2:
-            Console.WriteLine("Usuń transakcję\n");
+
+            var isTransactionFound = false;
+
+            if (transactions.Count == 0)
+            {
+                Console.WriteLine();
+                Console.WriteLine("Brak transakcji do usunięcia.");
+                Console.WriteLine();
+                break;
+            }
+
+            Console.WriteLine();
+            Console.Write("Którą transakcję chcesz usunąć?: ");
+            var isValidDeleteIdTransaction = int.TryParse(Console.ReadLine(), out  int deleteIdTransaction);
+
+            if (isValidDeleteIdTransaction)
+            {
+                foreach (var trans in transactions)
+                {
+                    if (deleteIdTransaction == trans.id)
+                    {
+                        isTransactionFound = true;
+                        Console.WriteLine();
+                        Console.WriteLine("Znaleziono transakcję.");
+                        Console.WriteLine();
+                        Console.WriteLine("1. Tak.");
+                        Console.WriteLine("2. Nie.");
+                        Console.WriteLine();
+                        Console.Write("Czy na pewno chcesz usunąć transakcję?: ");
+                        var isDeleteUserChoice = int.TryParse(Console.ReadLine(), out int deleteUserChoice);
+                        if (isDeleteUserChoice)
+                        {
+                            if (deleteUserChoice == 1)
+                            {
+                                transactions.Remove(trans);
+                                Console.WriteLine("Transakcja usunięta.");
+                                Console.WriteLine();
+                                accountBalance -= trans.amount;
+                                break;
+                            }
+                            else if (deleteUserChoice == 2)
+                            {
+                                Console.WriteLine("Transakcja nie zostanie usunięta. Spróbuj ponownie później.");
+                                Console.WriteLine();
+                                break;
+                            }
+                            else
+                            {
+                                Console.WriteLine("Niepoprawna opcja.");
+                            }
+                        }
+                        else
+                        {
+                            Console.WriteLine("Nie ma takiej opcji. Spróbuj ponownie gdy upewnisz się czy chcesz usunąć transakcję.");
+                        }
+                    }
+                }
+
+                if (isTransactionFound == false)
+                {
+                    Console.WriteLine();
+                    Console.WriteLine("Nie znaleziono transakcji o danym ID.\n");
+                }
+            }
+            else
+            {
+                Console.WriteLine("ID musi być liczbą całkowitą. Spróbuj ponownie.\n");
+            }
+            
             break;
         case 3:
             Console.WriteLine("Edytuj transakcję\n");
@@ -117,6 +185,7 @@ while (financeManagerActive)
             {
                 foreach (var trans in transactions)
                 {
+                    Console.WriteLine();
                     Console.WriteLine($"ID transakcji: {trans.id}");
                     Console.WriteLine($"Data transakcji: {trans.date}");
                     Console.WriteLine($"Typ transakcji: {trans.transactionType}");
@@ -127,7 +196,8 @@ while (financeManagerActive)
             break;
         
         case 5:
-            
+
+            Console.WriteLine();
             Console.WriteLine($"Twoj stan konta wynosi: {accountBalance},-\n");
             break;
         
